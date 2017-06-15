@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- 员工相关的mapper -->
+<mapper namespace="nsEmp">
+	<!-- 查询所有的员工 -->
+	<select id="findAllEmpByPage" resultType="Employee"
+		parameterType="Employee">
+		select e.*,p.pno pno,p.pname pname,p.state pstate,d.dno
+		dno,d.dname
+		dname,d.state dstate
+		from employee e , dept d, position p
+		where e.job =
+		p.pno and e.deptno = d.dno
+		<!--两种方式都可以： &lt; <![CDATA[<]]> -->
+		<if test="null != searchnumber">
+			and e.empno like '%||#{searchnumber}||%' or e.telephone like
+			'%||#{searchnumber}||%'
+		</if>
+		<if test="null != searchstring">
+			and e.ename like '%'||#{searchstring}||'%' or p.pname like
+			'%'||#{searchstring}||'%'
+		</if>
+		<!-- 性别判断筛选 -->
+		<if test="null != searchsex and searchsex != ''">
+			and gender = #{searchsex}
+		</if>
+		<!-- 部门编号判断 -->
+		<if test="null != searchdno and searchdno != 0">
+			and d.dno = #{searchdno}
+		</if>
+		<!-- 是否离职 -->
+		<if test="null != searchstate and searchstate != -1">
+			and state = #{searchstate}
+		</if>
+		<!-- 下面为起止时间判断 -->
+		<if test="null != starttime ">
+			and entrydate >= #{starttime}
+		</if>
+		<if test="null != endtime ">
+			and entrydate &lt;= #{endtime}
+		</if>
+		order by empno
+	</select>
+
+	<!-- 增加员工 -->
+	<insert id="addEmp">
+		insert into employee values(seq_employee.nextval,
+		#{ename},
+		#{gender}, to_date(#{birthdate}, 'dd-mm-yyyy'),
+		to_date(#{entrydate},
+		'dd-mm-yyyy'), #{nation}, #{nativeplace},
+		#{eduback}, #{specialty},
+		#{school}, #{address},#{sal},#{email},
+		#{Idnumber}, #{telephone}, #{bank},#{deptno},
+		#{job},#{bio},#{state},#{remark}, );
+	</insert>
+
+	<!-- 修改员工信息 -->
+	<update id="updateEmp">
+		update employee
+		<set>
+			<if test="null != bank">
+				bank = #{bank},
+			</if>
+			<if test="null != Deptno">
+				Deptno = #{Deptno},
+			</if>
+			<if test="null != job">
+				job = #{job},
+			</if>
+			<if test="null != State">
+				State = #{State},
+			</if>
+		</set>
+	</update>
+
+	<!-- 员工 -->
+</mapper>
