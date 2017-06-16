@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import service.DeptService;
 import service.EmployeeService;
+import entity.Dept;
 import entity.Employee;
 
 @Controller
@@ -24,6 +25,7 @@ public class EmployeeController {
 	 */
 	@Autowired
 	private EmployeeService employeeService;
+
 	@Autowired
 	private DeptService deptService;
 
@@ -70,6 +72,28 @@ public class EmployeeController {
 		} catch (IOException e) {
 			new Exception("应该是读写io出错了,控制器跳转出错,addemp.do中");
 		}
-
 	}
+
+	/**
+	 * ajax部门 与人员的级联，根据部门编号
+	 */
+	@RequestMapping("")
+	public String getEmpByDeptId(@ModelAttribute Dept dept, HttpSession session) {
+		// 加载部门下拉框和， 职位下拉框内容
+		session.setAttribute("deptList", employeeService.getEmpByDeptId(dept));
+		return "redirect:rsxz/AddEmploylee.jsp";
+	}
+
+	/**
+	 * ajax请求不需要返回页面，只需要得到response中的数据即可，所以方法签名为void即可
+	 * 
+	 * @param request
+	 * @param response
+	 */
+	/*
+	 * @RequestMapping(value = "ajax", method = RequestMethod.POST) public void
+	 * ajaxDatas(HttpServletRequest request, HttpServletResponse response) {
+	 * String jsonResult = getJSONString(request); renderData(response,
+	 * jsonResult); }
+	 */
 }

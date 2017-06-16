@@ -32,6 +32,7 @@
 			<list>
 				<value>classpath:dao/impl/EmployeeMapper.xml</value>
 				<value>classpath:dao/impl/DeptMapper.xml</value>
+				<value>classpath:dao/impl/TaskMapper.xml</value>
 			</list>
 		</property>
 	</bean>

@@ -4,3 +4,7 @@
 /entity
 /exception
 /dao
+/applicationContext.xml
+/interceptor
+/log4j.properties
+/mybatis.xml

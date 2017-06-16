@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import dao.EmployeeDao;
+import entity.Dept;
 import entity.Employee;
 
 @Repository
@@ -66,6 +67,14 @@ public class EmployeeDaoImpl extends SqlSessionDaoSupport implements
 	public int delEmp(Employee emp) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	/*
+	 * 根据部门编号获取员工
+	 */
+	@Override
+	public List<Employee> getEmpByDeptId(Dept dept) {
+		return getSqlSession().selectList("nsEmp.getEmpByDeptId", dept);
 	}
 
 }

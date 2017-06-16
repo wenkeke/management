@@ -74,5 +74,8 @@
 		</set>
 	</update>
 
-	<!-- 员工 -->
+	<!-- ajax.级联用，根据部门编号得到员工人信息 -->
+	<select id="getEmpByDeptId" resultType="Employee">
+		select * from employee where deptno = dno
+	</select>
 </mapper>

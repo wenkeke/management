@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- 任务相关的mapper -->
+<mapper namespace="nsTask">
+	<!-- 查询所有的任务 -->
+	<select id="findAllTask" resultType="Task">
+		select * from task
+	<!-- 	<where>
+			<if test=""></if>
+			<if test=""></if>
+			<if test=""></if>
+			<if test=""></if>
+			<if test=""></if>
+		</where> -->
+
+		order by createdate desc
+	</select>
+
+	<!-- 根据任务编号查询任务 -->
+	<select id="findTaskById" resultType="Task">
+		select * from task where
+		tid = #{tid}
+	</select>
+	<!--新建增加任务 -->
+	<insert id="addTask">
+		insert into task values(seq_task.nextval,#{ttitle},
+		#{begindate},#{enddate},sysdate,#{empno1},null,#{ischangestate},#{tcontext},#{tpath},0,#{tstate},#{reason},#{replytext},#{replypath},1);
+	</insert>
+	
+	<!-- 任务转移申请，转移状态2, -->
+	<update id="updateTask">
+		update task set ischangestate = 2 ,cid = #{empno2} where tid = #{tid}
+	</update>
+	<!-- 任务延期，可在截止日期上修改 -->
+	<update id="updateLongDate">
+		update task set enddate = #{enddate} where tid = #{tid}
+	</update>
+	
+	<!-- 任务转移是否同意答复 -->
+	<update id="isAgreeTask">
+		update task set isAgreeState = #{isAgreeState} where tid = #{tid}
+	</update>
+</mapper>

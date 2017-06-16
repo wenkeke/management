@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import service.EmployeeService;
 import dao.EmployeeDao;
+import entity.Dept;
 import entity.Employee;
 
 @Service
@@ -127,5 +128,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 	// public void setEmployeeDao(EmployeeDao employeeDao) {
 	// this.employeeDao = employeeDao;
 	// }
+	/*
+	 * 根据部门编号获取人员
+	 */@Override
+	public List<Employee> getEmpByDeptId(Dept dept) {
+		return employeeDao.getEmpByDeptId(dept);
+	}
 
 }

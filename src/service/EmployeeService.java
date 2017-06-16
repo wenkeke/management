@@ -3,6 +3,7 @@ package service;
 import java.text.ParseException;
 import java.util.List;
 
+import entity.Dept;
 import entity.Employee;
 
 public interface EmployeeService {
@@ -25,4 +26,9 @@ public interface EmployeeService {
 	 * 删除员工
 	 */
 	public boolean delEmp(Employee emp);
+
+	/*
+	 * 根据部门编号获取人员
+	 */
+	public List<Employee> getEmpByDeptId(Dept dept);
 }

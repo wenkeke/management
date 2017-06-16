@@ -25,6 +25,70 @@ public class Task extends SplitPage implements java.io.Serializable {
 	private Integer isAgreeState; // 是否同意转移申请
 	private Integer tstate; // 任务完成状态
 	private String reason; // 原因
+	private String replytext;// 执行内容描述
+	private String replypath;// 执行附件 ，可选
+	private Integer replystate;// 是否执行，默认为1未执行，2，执行
+
+	private String stringbegindate;
+	private String stringenddate;
+	private Integer empno1;
+	private Integer empno2;
+
+	public String getStringbegindate() {
+		return stringbegindate;
+	}
+
+	public void setStringbegindate(String stringbegindate) {
+		this.stringbegindate = stringbegindate;
+	}
+
+	public String getStringenddate() {
+		return stringenddate;
+	}
+
+	public void setStringenddate(String stringenddate) {
+		this.stringenddate = stringenddate;
+	}
+
+	public Integer getEmpno1() {
+		return empno1;
+	}
+
+	public void setEmpno1(Integer empno1) {
+		this.empno1 = empno1;
+	}
+
+	public Integer getEmpno2() {
+		return empno2;
+	}
+
+	public void setEmpno2(Integer empno2) {
+		this.empno2 = empno2;
+	}
+
+	public String getReplytext() {
+		return replytext;
+	}
+
+	public void setReplytext(String replytext) {
+		this.replytext = replytext;
+	}
+
+	public String getReplypath() {
+		return replypath;
+	}
+
+	public void setReplypath(String replypath) {
+		this.replypath = replypath;
+	}
+
+	public Integer getReplystate() {
+		return replystate;
+	}
+
+	public void setReplystate(Integer replystate) {
+		this.replystate = replystate;
+	}
 
 	public String getReason() {
 		return reason;

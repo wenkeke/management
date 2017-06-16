@@ -2,6 +2,7 @@ package dao;
 
 import java.util.List;
 
+import entity.Dept;
 import entity.Employee;
 
 /**
@@ -31,4 +32,9 @@ public interface EmployeeDao {
 	 * 删除员工
 	 */
 	public int delEmp(Employee emp);
+
+	/*
+	 * 根据部门编号获取员工
+	 */
+	public List<Employee> getEmpByDeptId(Dept dept);
 }
