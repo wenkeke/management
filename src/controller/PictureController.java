@@ -35,7 +35,7 @@ public class PictureController {
 		String path = pictureService.getPathByFileName(fileName);// 声明要保存的路径位置
 		// 得到绝对路径
 		String absPath = session.getServletContext().getRealPath(path);
-		// 创建文件流对象，设置好保存的格式和路径
+		// 创建文件流对象， 设置好保存的格式和路径
 		File files = new File(absPath + File.separator
 				+ pictureService.getFileNameAndRandom()
 				+ fileName.substring(fileName.lastIndexOf('.')));

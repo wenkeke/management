@@ -1,3 +1,6 @@
 /controller
 /service
 /test
+/entity
+/exception
+/dao

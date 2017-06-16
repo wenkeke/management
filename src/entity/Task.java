@@ -1,4 +1,5 @@
 package entity;
+
 // default package
 
 import java.util.Date;
@@ -7,7 +8,7 @@ import java.util.Date;
  * Task entity. @author MyEclipse Persistence Tools
  */
 
-public class Task implements java.io.Serializable {
+public class Task extends SplitPage implements java.io.Serializable {
 
 	// Fields
 
@@ -18,56 +19,23 @@ public class Task implements java.io.Serializable {
 	private Date begindate;
 	private Date enddate;
 	private Date createdate;
-	private Integer importantstate;
+	private Integer ischangestate;
 	private String tcontext;
 	private String tpath;
-	private Integer auditingstate;
-	private Integer tstate;
+	private Integer isAgreeState; // 是否同意转移申请
+	private Integer tstate; // 任务完成状态
+	private String reason; // 原因
 
-	// Constructors
-
-	/** default constructor */
-	public Task() {
+	public String getReason() {
+		return reason;
 	}
 
-	/** minimal constructor */
-	public Task(Employee employeeByUserid, String ttitle, Date begindate,
-			Date enddate, Date createdate, Integer importantstate,
-			String tcontext, String tpath, Integer auditingstate, Integer tstate) {
-		this.employeeByUserid = employeeByUserid;
-		this.ttitle = ttitle;
-		this.begindate = begindate;
-		this.enddate = enddate;
-		this.createdate = createdate;
-		this.importantstate = importantstate;
-		this.tcontext = tcontext;
-		this.tpath = tpath;
-		this.auditingstate = auditingstate;
-		this.tstate = tstate;
+	public void setReason(String reason) {
+		this.reason = reason;
 	}
-
-	/** full constructor */
-	public Task(Employee employeeByUserid, Employee employeeByCid,
-			String ttitle, Date begindate, Date enddate, Date createdate,
-			Integer importantstate, String tcontext, String tpath,
-			Integer auditingstate, Integer tstate) {
-		this.employeeByUserid = employeeByUserid;
-		this.employeeByCid = employeeByCid;
-		this.ttitle = ttitle;
-		this.begindate = begindate;
-		this.enddate = enddate;
-		this.createdate = createdate;
-		this.importantstate = importantstate;
-		this.tcontext = tcontext;
-		this.tpath = tpath;
-		this.auditingstate = auditingstate;
-		this.tstate = tstate;
-	}
-
-	// Property accessors
 
 	public Integer getTid() {
-		return this.tid;
+		return tid;
 	}
 
 	public void setTid(Integer tid) {
@@ -75,7 +43,7 @@ public class Task implements java.io.Serializable {
 	}
 
 	public Employee getEmployeeByUserid() {
-		return this.employeeByUserid;
+		return employeeByUserid;
 	}
 
 	public void setEmployeeByUserid(Employee employeeByUserid) {
@@ -83,7 +51,7 @@ public class Task implements java.io.Serializable {
 	}
 
 	public Employee getEmployeeByCid() {
-		return this.employeeByCid;
+		return employeeByCid;
 	}
 
 	public void setEmployeeByCid(Employee employeeByCid) {
@@ -91,7 +59,7 @@ public class Task implements java.io.Serializable {
 	}
 
 	public String getTtitle() {
-		return this.ttitle;
+		return ttitle;
 	}
 
 	public void setTtitle(String ttitle) {
@@ -99,7 +67,7 @@ public class Task implements java.io.Serializable {
 	}
 
 	public Date getBegindate() {
-		return this.begindate;
+		return begindate;
 	}
 
 	public void setBegindate(Date begindate) {
@@ -107,7 +75,7 @@ public class Task implements java.io.Serializable {
 	}
 
 	public Date getEnddate() {
-		return this.enddate;
+		return enddate;
 	}
 
 	public void setEnddate(Date enddate) {
@@ -115,23 +83,23 @@ public class Task implements java.io.Serializable {
 	}
 
 	public Date getCreatedate() {
-		return this.createdate;
+		return createdate;
 	}
 
 	public void setCreatedate(Date createdate) {
 		this.createdate = createdate;
 	}
 
-	public Integer getImportantstate() {
-		return this.importantstate;
+	public Integer getIschangestate() {
+		return ischangestate;
 	}
 
-	public void setImportantstate(Integer importantstate) {
-		this.importantstate = importantstate;
+	public void setIschangestate(Integer ischangestate) {
+		this.ischangestate = ischangestate;
 	}
 
 	public String getTcontext() {
-		return this.tcontext;
+		return tcontext;
 	}
 
 	public void setTcontext(String tcontext) {
@@ -139,23 +107,23 @@ public class Task implements java.io.Serializable {
 	}
 
 	public String getTpath() {
-		return this.tpath;
+		return tpath;
 	}
 
 	public void setTpath(String tpath) {
 		this.tpath = tpath;
 	}
 
-	public Integer getAuditingstate() {
-		return this.auditingstate;
+	public Integer getIsAgreeState() {
+		return isAgreeState;
 	}
 
-	public void setAuditingstate(Integer auditingstate) {
-		this.auditingstate = auditingstate;
+	public void setIsAgreeState(Integer isAgreeState) {
+		this.isAgreeState = isAgreeState;
 	}
 
 	public Integer getTstate() {
-		return this.tstate;
+		return tstate;
 	}
 
 	public void setTstate(Integer tstate) {

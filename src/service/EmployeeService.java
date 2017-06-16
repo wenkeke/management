@@ -1,5 +1,6 @@
 package service;
 
+import java.text.ParseException;
 import java.util.List;
 
 import entity.Employee;
@@ -13,7 +14,7 @@ public interface EmployeeService {
 	/*
 	 * 增加员工
 	 */
-	public boolean addEmp(Employee emp);
+	public boolean addEmp(Employee emp) throws ParseException;
 
 	/*
 	 * 修改员工信息

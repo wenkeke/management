@@ -34,9 +34,14 @@
 										var v = date.getFullYear() + "-"
 												+ (date.getMonth() + 1) + "-"
 												+ date.getDate();
-										$("#birthdate").val(v);
+										$("#birdate").val(v);
 									}
 								});
+								
+					/* 提交表单 */
+					$("#submit").click(function(){
+						$("#addform").submit();
+					});
 					});
 				</script>
 </head>
@@ -74,10 +79,12 @@
 					<td colspan="4" class="mian_b_bg_lm">添加员工信息</td>
 				</tr>
 			</table>
+			<form action="../addEmp.do" method="post" id="addform">
+			<%-- <sf:form></sf:form> --%>
 			<table width="100%" border="1" cellpadding="0" cellspacing="0"
 				class="mian_b_bg_xz">
 				<tr style="background-color: White; height: 30px">
-					<td colspan="8">基本信息<span class="redmark">*</span>为必填</td>
+					<td colspan="7">基本信息<span class="redmark">*</span>为必填</td>
 				</tr>
 				<tr style="background-color: White; height: 30px">
 					<td style="width: 8%;" align="center">姓名<span class="redmark">*</span>
@@ -95,24 +102,32 @@
 						<img src="..\images\head_pic.png">
 					</td>
 				</tr>
-				<tr style="background-color: White; height: 30px">
+				<tr style="background-color: White; height: 20px">
 					<td><input id="Text1" type="text" name="ename"
 						style="border: 0px; ">
 					</td>
-					<td><select id="Select1" style="width: 80px" name="gender">
+					<td>
+					<select name="gender" id="">
+							<option value="男">请选择</option>
 							<option value="男">男</option>
 							<option value="女">女</option>
-					</select></td>
+							</select>
+					<!-- <select   name="gender">
+							<option value='男'>请选择</option>
+							<option value=‘男’>男</option>
+							<option value='女'>女</option>
+					</select> --></td>
 
 
 
 					<td><input class="easyui-datebox" id="birthdate"
 						data-options="label:'',labelPosition:'top',onSelect:onSelect"
-						style="width:100px;height: 30px" /> <script>
+						style="width:150px;height: 20px" /> <script>
 							function onSelect(date) {
 
 							}
-						</script> <input id="Text2" type="hidden" name="birthdate"
+						</script> <input id="Text2" type="hidden" name="birdate" id="birdate	" 
+						"
 						style="border: 0px; width: 100px">
 					</td>
 					<!-- 学历 -->
@@ -124,8 +139,7 @@
 							<option value="硕士">硕士</option>
 							<option value="博士">博士</option>
 
-					</select> <input id="Text3" type="text" name="specialty"
-						style="border: 0px; width: 100px">
+					</select>
 					</td>
 					<td><input id="Text4" type="text" name="school"
 						style="border: 0px; width: 100px">
@@ -157,7 +171,7 @@
 					</td>
 
 				</tr>
-				<tr style="background-color: White; height: 30px">
+				<!-- <tr style="background-color: White; height: 30px">
 					<td colspan="8">
 						其它经历&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a>新增</a>
 					</td>
@@ -189,9 +203,9 @@
 
 								</thead>
 							</table></td>
-				</tr>
+				</tr> -->
 				<tr style="background-color: White; height: 30px">
-					<td colspan="8">职位信息</td>
+					<td colspan="6">职位信息</td>
 				</tr>
 				<tr style="background-color: White; height: 30px">
 					<td align="center">部门</td>
@@ -199,7 +213,6 @@
 					<td align="center">&nbsp;工号</td>
 					<td align="center">&nbsp;入职时间</td>
 					<td align="center">&nbsp;工资</td>
-					<td align="center" valign="middle">备注</td>
 					<td align="center" valign="middle">备注</td>
 				</tr>
 				<tr style="background-color: White; height: 30px">
@@ -217,11 +230,9 @@
 					</select></td>
 					<td align="center"><input type="text" name="empno" />
 					</td>
-					<td align="center"><input type="text" name="entrydate" />
+					<td align="center"><input type="text" name="Stringentrydate" />
 					</td>
 					<td align="center"><input type="text" name="sal" />
-					</td>
-					<td align="center"><input type="text" name="remarks" />
 					</td>
 					<td align="center"><input type="text" name="remarks" />
 					</td>
@@ -286,7 +297,7 @@
 
 						</table></td>
 				</tr> -->
-				<tr style="background-color: White; height: 30px">
+				<!-- <tr style="background-color: White; height: 30px">
 					<td style="text-align: left" colspan="6">人事部确认</td>
 					<td align="center"><select name="D1">
 							<option>张三
@@ -297,22 +308,28 @@
 					<td align="center"><select name="D1">
 							<option>李四
 					</select></td>
-				</tr>
+				</tr> -->
 				<tr style="background-color: White; height: 30px">
-					<td style="text-align: left" colspan="6">填表日期</td>
-					<td align="center"><input id="Text14" type="text"
-						style="border: 0px; width: 100px" value="2012-03-21">
+					<td style="text-align: left" >填表日期</td>
+					<td align="center"><input class="easyui-datebox" id="formdate" colspan="7"
+						data-options="label:'',labelPosition:'top',onSelect:onSelect"
+						style="width:100px;height: 30px" /> <script>
+							function onSelect(date) {
+
+							}
+						</script>
 					</td>
 				</tr>
 				<tr style="background-color: White; height: 30px">
-					<td align="center" colspan="8"><a href="Employlee.jsp"> <img
+					<td align="center" colspan="8"><a href="javascript:void(0)" id="submit"> <img
 							src="..\images\bnt_03.gif" style="margin-right: 10px;" width="80"
 							height="22">
-					</a><a href="Employlee.jsp"><img src="..\images\bnt_05.gif" alt=""
+					</a><a href="../findAllEmp.do"><img src="..\images\bnt_05.gif" alt=""
 							width="80" height="22">
 					</a></td>
 				</tr>
 			</table>
+			</form>
 		</div>
 	</div>
 </body>

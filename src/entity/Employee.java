@@ -39,6 +39,37 @@ public class Employee extends SplitPage implements java.io.Serializable {
 	private String pname;
 
 	/**
+	 * 三个时间
+	 */
+	private String birdate;
+	private String formdate;
+	private String Stringentrydate;
+
+	public String getBirdate() {
+		return birdate;
+	}
+
+	public void setBirdate(String birdate) {
+		this.birdate = birdate;
+	}
+
+	public String getFormdate() {
+		return formdate;
+	}
+
+	public void setFormdate(String formdate) {
+		this.formdate = formdate;
+	}
+
+	public String getStringentrydate() {
+		return Stringentrydate;
+	}
+
+	public void setStringentrydate(String stringentrydate) {
+		Stringentrydate = stringentrydate;
+	}
+
+	/**
 	 * 搜索条件字段
 	 */
 	// 工号、姓名、职位、手机

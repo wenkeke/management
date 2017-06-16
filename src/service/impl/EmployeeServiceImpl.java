@@ -78,7 +78,23 @@ public class EmployeeServiceImpl implements EmployeeService {
 	 */
 	@Transactional
 	@Override
-	public boolean addEmp(Employee emp) {
+	public boolean addEmp(Employee emp) throws ParseException {
+		// 把字符串转为时间类型
+		if (!"".equals(emp.getBirdate()) && null != emp.getBirdate()) {
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			emp.setBirthdate(sdf.parse(emp.getBirdate()));
+		}
+		/*
+		 * if (!"".equals(emp.getFormdate()) && null != emp.getFormdate()) {
+		 * SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		 * emp.set(sdf.parse(emp.getFormdate())); }
+		 */
+		if (!"".equals(emp.getStringentrydate())
+				&& null != emp.getStringentrydate()) {
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			emp.setEntrydate(sdf.parse(emp.getStringentrydate()));
+		}
+
 		if (employeeDao.addEmp(emp) > 0) {
 			return true;
 		}
